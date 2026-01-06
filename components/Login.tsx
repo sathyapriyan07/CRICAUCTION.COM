@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
-import { UserRole, League } from '../types';
-import { MOCK_TEAMS } from '../constants';
+import { UserRole, League } from '../types.ts';
+import { MOCK_TEAMS } from '../constants.tsx';
 import { Gavel, User as UserIcon, ShieldCheck, Globe } from 'lucide-react';
 
 interface LoginProps {

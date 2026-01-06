@@ -13,19 +13,20 @@ import {
   LogOut,
   Zap
 } from 'lucide-react';
-import { League, User } from '../types';
-import { LEAGUE_CONFIG } from '../constants';
+import { League, User } from '../types.ts';
+import { LEAGUE_CONFIG } from '../constants.tsx';
 
 interface LayoutProps {
   children: React.ReactNode;
   user: User;
   currentLeague: League;
   onLeagueChange: (league: League) => void;
-  onNavigate: (view: 'dashboard' | 'auction') => void;
+  onNavigate: (view: 'dashboard' | 'auction' | 'settings') => void;
   onLogout: () => void;
+  currentView: string;
 }
 
-export const Layout: React.FC<LayoutProps> = ({ children, user, currentLeague, onLeagueChange, onNavigate, onLogout }) => {
+export const Layout: React.FC<LayoutProps> = ({ children, user, currentLeague, onLeagueChange, onNavigate, onLogout, currentView }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   return (
@@ -60,12 +61,15 @@ export const Layout: React.FC<LayoutProps> = ({ children, user, currentLeague, o
           <nav className="space-y-1 flex-1">
             <NavItem 
               onClick={() => { onNavigate('dashboard'); setIsSidebarOpen(false); }} 
-              icon={LayoutDashboard} label="Hub Feed" active 
+              icon={LayoutDashboard} label="Hub Feed" active={currentView === 'dashboard'} 
             />
             <NavItem icon={Zap} label="Live Rooms" />
             <NavItem icon={Trophy} label="Rankings" />
             <NavItem icon={Users} label="Scouting" />
-            <NavItem icon={Settings} label="Prefs" />
+            <NavItem 
+              onClick={() => { onNavigate('settings'); setIsSidebarOpen(false); }}
+              icon={Settings} label="Prefs" active={currentView === 'settings'} 
+            />
           </nav>
 
           <div className="pt-6 border-t border-slate-800 space-y-4">

@@ -16,20 +16,22 @@ import {
   ChevronRight,
   Zap,
   List,
-  MessageSquare
+  MessageSquare,
+  Image as ImageIcon
 } from 'lucide-react';
-import { League, AuctionStatus, User, UserRole, Player } from '../types';
-import { LEAGUE_CONFIG } from '../constants';
-import { useAuction } from '../hooks/useAuction';
+import { League, AuctionStatus, User, UserRole, Player } from '../types.ts';
+import { LEAGUE_CONFIG } from '../constants.tsx';
+import { useAuction } from '../hooks/useAuction.ts';
 
 interface AuctionRoomProps {
   user: User;
   league: League;
   onExit: () => void;
   customPlayers?: Player[];
+  showImages?: boolean;
 }
 
-export const AuctionRoom: React.FC<AuctionRoomProps> = ({ user, league, onExit, customPlayers }) => {
+export const AuctionRoom: React.FC<AuctionRoomProps> = ({ user, league, onExit, customPlayers, showImages = true }) => {
   const { state, placeBid, startAuction, commentary } = useAuction(league, user, customPlayers);
   const [mobileTab, setMobileTab] = useState<'live' | 'table' | 'history'>('live');
   const config = LEAGUE_CONFIG[league];
@@ -168,8 +170,15 @@ export const AuctionRoom: React.FC<AuctionRoomProps> = ({ user, league, onExit, 
               </div>
 
               <div className="shrink-0 flex justify-center sm:block">
-                <div className="w-32 h-32 sm:w-40 sm:h-40 rounded-2xl overflow-hidden border-4 border-slate-600/50 bg-slate-900 shadow-xl">
-                   <img src={currentPlayer.image} alt={currentPlayer.name} className="w-full h-full object-cover" />
+                <div className="w-32 h-32 sm:w-40 sm:h-40 rounded-2xl overflow-hidden border-4 border-slate-600/50 bg-slate-900 shadow-xl flex items-center justify-center">
+                   {showImages ? (
+                     <img src={currentPlayer.image} alt={currentPlayer.name} className="w-full h-full object-cover" />
+                   ) : (
+                     <div className="flex flex-col items-center gap-2 text-slate-600">
+                        <ImageIcon size={40} />
+                        <span className="text-[8px] font-black uppercase">Visuals Disabled</span>
+                     </div>
+                   )}
                 </div>
               </div>
               

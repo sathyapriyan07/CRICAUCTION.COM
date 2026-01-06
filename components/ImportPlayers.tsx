@@ -2,7 +2,7 @@
 import React, { useState, useRef } from 'react';
 import { X, FileUp, Info, CheckCircle2, AlertCircle, Download } from 'lucide-react';
 import * as XLSX from 'xlsx';
-import { Player, PlayerRole } from '../types';
+import { Player, PlayerRole } from '../types.ts';
 
 interface ImportPlayersProps {
   onImport: (players: Player[]) => void;

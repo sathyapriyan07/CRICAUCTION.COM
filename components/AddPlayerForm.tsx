@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { X, UserPlus, Link as LinkIcon, BarChart3, Target, Zap, Activity } from 'lucide-react';
-import { Player, PlayerRole } from '../types';
+import { Player, PlayerRole } from '../types.ts';
 
 interface AddPlayerFormProps {
   onAdd: (player: Player) => void;

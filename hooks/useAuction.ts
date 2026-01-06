@@ -1,8 +1,8 @@
 
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { AuctionState, AuctionStatus, League, Player, Team, Bid, User, UserRole } from '../types';
-import { MOCK_PLAYERS, MOCK_TEAMS, LEAGUE_CONFIG } from '../constants';
-import { getAuctionCommentary } from '../services/geminiService';
+import { AuctionState, AuctionStatus, League, Player, Team, Bid, User, UserRole } from '../types.ts';
+import { MOCK_PLAYERS, MOCK_TEAMS, LEAGUE_CONFIG } from '../constants.tsx';
+import { getAuctionCommentary } from '../services/geminiService.ts';
 
 export const useAuction = (initialLeague: League, user: User, customPlayers?: Player[]) => {
   const [state, setState] = useState<AuctionState>(() => {

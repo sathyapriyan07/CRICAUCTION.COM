@@ -15,10 +15,10 @@ import {
   UserPlus,
   Trash2
 } from 'lucide-react';
-import { League, User, UserRole, Player } from '../types';
-import { LEAGUE_CONFIG } from '../constants';
-import { ImportPlayers } from './ImportPlayers';
-import { AddPlayerForm } from './AddPlayerForm';
+import { League, User, UserRole, Player } from '../types.ts';
+import { LEAGUE_CONFIG } from '../constants.tsx';
+import { ImportPlayers } from './ImportPlayers.tsx';
+import { AddPlayerForm } from './AddPlayerForm.tsx';
 
 interface DashboardProps {
   user: User;
