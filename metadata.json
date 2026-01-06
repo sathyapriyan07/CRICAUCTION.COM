@@ -1,0 +1,8 @@
+{
+  "name": "Elite Auction Simulator Pro",
+  "description": "A world-class, real-time auction simulator for IPL, SA20, and BBL leagues, featuring a sleek dashboard, live bidding, and AI-powered commentary.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
